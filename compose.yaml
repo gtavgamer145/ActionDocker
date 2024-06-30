@@ -1,12 +1,9 @@
 services:
   windows:
     image: dockurr/windows
+    container_name: windows
     environment:
-      DISK_SIZE: "64G"
-      RAM_SIZE: "8G"
-      CPU_CORES: "4"
-      DISK_TYPE: "ide"
-      ARGUMENTS: "-drive file=/driver.iso,media=cdrom"
+      VERSION: "win11"
     devices:
       - /dev/kvm
     cap_add:
@@ -15,8 +12,4 @@ services:
       - 8006:8006
       - 3389:3389/tcp
       - 3389:3389/udp
-    volumes:
-      - /mnt:/storage
-      - /isos/a.iso:/custom.iso
-      - /isos/driver.iso:/driver.iso
     stop_grace_period: 2m
